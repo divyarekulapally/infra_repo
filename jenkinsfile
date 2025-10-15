@@ -27,7 +27,7 @@ pipeline{
         }
         stage('infra scan'){
             steps{
-                sh 'tfsec .'
+                sh 'terraform scan'
             }
         }
         stage('lint'){
