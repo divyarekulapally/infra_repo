@@ -2,8 +2,7 @@ pipeline{
     agent{
         label 'INFRA'
     }
-}
-stages{
+
     stages {
         stage('git checkout') {
             steps {
