@@ -25,7 +25,11 @@ pipeline{
                 sh 'terraform fmt'
             }
         }
-
+        stage('infra scan'){
+            steps{
+                sh 'terraform scan'
+            }
+        }
         stage('lint'){
             steps{
                 sh 'tflint'
