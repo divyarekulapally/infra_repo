@@ -12,38 +12,59 @@ pipeline{
         }
         stage('terraform init'){
             steps{
+                dir('tffiles')
+                {
                 sh 'terraform init'
+                }
             }
         }
         stage('terraform validate'){
             steps{
+                dir('tffiles')
+                {
                 sh 'terraform validate'
+                }
             }
         }
         stage('terraform format'){
             steps{
+                dir('tffiles')
+                {
                 sh 'terraform fmt'
+                }
             }
         }
         stage('infra scan'){
             steps
             {
+                dir('tffiles')
+                {
                 sh 'tfsec --soft-fail .'
+                }
             }
         }
         stage('lint'){
             steps{
+                dir('tffiles')
+                {
                 sh 'tflint'
+                }
             }
         }
         stage('terraform plan'){
             steps{
+                dir('tffiles')
+                {
                 sh 'terraform plan'
+                }
             }
         }
         stage('terraform apply'){
             steps{
+                dir('tffiles')
+                {
                 sh 'terraform apply -auto-approve'
+                }
             }
         }
     }
