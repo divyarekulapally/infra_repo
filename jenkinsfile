@@ -29,7 +29,6 @@ pipeline{
             steps
             {
                 sh 'tfsec --soft-fail .'
-                sh 'terraform scan'
             }
         }
         stage('lint'){
