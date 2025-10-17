@@ -20,7 +20,7 @@ pipeline{
                 sh 'terraform validate'
             }
         }
-        stage('terraform formate'){
+        stage('terraform format'){
             steps{
                 sh 'terraform fmt'
             }
@@ -28,11 +28,8 @@ pipeline{
         stage('infra scan'){
             steps
             {
-                tfsec --soft-fail .
-                {
-                    
-                    sh 'terraform scan'
-                }
+                sh 'tfsec --soft-fail .'
+                sh 'terraform scan'
             }
         }
         stage('lint'){
