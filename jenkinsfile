@@ -26,8 +26,13 @@ pipeline{
             }
         }
         stage('infra scan'){
-            steps{
-                sh 'terraform scan'
+            steps
+            {
+                tfsec --soft-fail .
+                {
+                    
+                    sh 'terraform scan'
+                }
             }
         }
         stage('lint'){
