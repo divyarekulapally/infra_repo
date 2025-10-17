@@ -2,6 +2,10 @@ pipeline{
     agent{
         label 'INFRA'
     }
+     environment {
+        AWS_ACCESS_KEY_ID     = credentials('id_1234') // This is the ID you've given
+        AWS_SECRET_ACCESS_KEY = credentials('id_1234') // Assuming both ID & Secret kept under same ID
+    }
 
     stages {
         stage('git checkout') {
